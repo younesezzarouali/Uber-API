@@ -3,6 +3,11 @@
   "app_id": "",
   "type": "ionic-angular",
   "integrations": {
-    "cordova": {}
+    "cordova": {},
+    "gulp": {}
+  },
+  "gulp": {
+    "file": "gulpfile.js",
+    "enabled": true
   }
 }

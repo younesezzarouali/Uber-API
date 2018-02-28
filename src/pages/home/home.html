@@ -1,17 +1,20 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Home</ion-title>
+    <ion-title>Estimation de prix</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+  <h2>Uber estimation de prix</h2>
+  <div style="height: 100%;width: 100%;" #map id="map"></div>
+  <ion-footer
+    *ngIf="priceService.estimations && priceService.estimations.length>0" class="price-bar">
+    Prix max : {{priceService.estimations[0].high_estimate}}{{priceService.estimations[0].currency_code}} -
+    Prix min : {{priceService.estimations[0].low_estimate	}}{{priceService.estimations[0].currency_code}} -
+    Durée : {{priceService.estimations[0].duration }} minutes
+  </ion-footer>
+  <ion-footer
+    *ngIf="priceService.estimations && priceService.estimations.length<=0" class="price-bar">
+    Pas de resultats !
+  </ion-footer>
 </ion-content>

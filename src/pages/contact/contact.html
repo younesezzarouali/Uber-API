@@ -1,17 +1,19 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Contact
+      Détails
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content>
-  <ion-list>
-    <ion-list-header>Follow us on Twitter</ion-list-header>
-    <ion-item>
-      <ion-icon name="ionic" item-start></ion-icon>
-      @ionicframework
-    </ion-item>
+  <ion-list *ngIf="priceService.hasOwnProperty('estimations') && priceService.estimations.length>0">
+    <ion-list-header>Détails de l'éstimation de prix : </ion-list-header>
+    <ion-item>currency_code	 : <strong>{{priceService.estimations[0].currency_code}}</strong></ion-item>
+    <ion-item>distance : <strong>{{priceService.estimations[0].distance}} miles</strong></ion-item>
+    <ion-item>high_estimate : <strong>{{priceService.estimations[0].high_estimate}} {{priceService.estimations[0].currency_code}}</strong></ion-item>
+    <ion-item>low_estimate : <strong>{{priceService.estimations[0].low_estimate}} {{priceService.estimations[0].currency_code}}</strong></ion-item>
+    <ion-item>duration : <strong>{{priceService.estimations[0].duration}} minutes</strong></ion-item>
   </ion-list>
+  <ion-title *ngIf="!priceService.hasOwnProperty('estimations') || (priceService.estimations && priceService.estimations.length<=0)" >Pas de résultats</ion-title>
 </ion-content>
